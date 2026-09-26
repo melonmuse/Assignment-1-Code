@@ -1,3 +1,5 @@
+
+
 public class Coordinate {
     private final int column;
     private final int row;

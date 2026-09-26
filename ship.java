@@ -1,6 +1,6 @@
 import java.util.ArrayList;
 
-//INCOMPLETE
+//INCOMPLETE. STILL NEEDS WORK
 
 public abstract class Ship {
     private String name;

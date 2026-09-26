@@ -1,3 +1,4 @@
+
 public class Battleship extends Ship{
     private boolean armorUsed;
 
