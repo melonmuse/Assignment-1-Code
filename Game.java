@@ -1,11 +1,7 @@
-// Group Members:
-// Student 1 – ID
-// Student 2 – ID
-// Student 3 – ID
+//1097512 - Abeer Abu Shiekah
+
 
 import java.util.Scanner;
-
-
 public class Game {
     private final Player player1;
     private final Player player2;
@@ -45,7 +41,7 @@ public class Game {
 
     }
     
-    //After Arenas Class is Completed
+    //After Arenas Class is Completed Come Back to It
     private void selectArenas(Scanner input) {
         System.out.println("\nChoose arena:");
         System.out.println("1. Preset Arena");

@@ -1,6 +1,4 @@
 //1097512 - Abeer Abu Shiekah
-//
-// 
 
 import java.util.ArrayList;
 public class Player {
