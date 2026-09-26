@@ -1,96 +1,85 @@
+// Group Members:
+// Student 1 – ID
+// Student 2 – ID
+// Student 3 – ID
+
+import java.util.Scanner;
+
+
 public class Game {
-    private Player player1;
-    private Player player2;
+    private final Player player1;
+    private final Player player2;
+    private final Player currentPlayer;
+    private final Player[] playerList;
 
-    private Player currentPlayer;
-    private boolean gameOver;
-
-    public Game(Player player1, Player player2) {
-        this.player1 = player1;
-        this.player2 = player2;
-
-        currentPlayer = player1;
-        gameOver=false;
-
+    Game(Player player1, Player player2) {
+        this.player1=player1;
+        this.player2=player2;
+        this.currentPlayer = player1;
+        this.playerList = new Player[]{player1, player2};
     }
 
-    //Getters and Setters for Private Fields
-    public Player getPlayer1() {
-        return player1;
+    public void start() {
+        Scanner input = new Scanner(System.in);
+
+        registerPlayers(input);
+        selectArenas(input);
+        buildFleets();
+
+        runBattle(input);
+        displayStatistics();
     }
 
-    public void setPlayer1(Player player1) {
-        this.player1 = player1;
-    }
+    //Methods
+    private void registerPlayers(Scanner input) {
+        System.out.println("Naval Fleet Battle Game");
+        
+        //Enter gamers details
+        System.out.print("Enter Player 1's Name: ");
+        String name1 = input.nextLine();
+        Player player1 = new Player(name1);
 
-    public Player getPlayer2() {
-        return player2;
-    }
+        System.out.println("Enter Player 2's Name: ");
+        String name2 = input.nextLine();
+        Player player2 = new Player(name2);
 
-    public void setPlayer2(Player player2) {
-        this.player2 = player2;
     }
+    
+    //After Arenas Class is Completed
+    private void selectArenas(Scanner input) {
+        System.out.println("\nChoose arena:");
+        System.out.println("1. Preset Arena");
+        System.out.println("2. Random Arena");
+        System.out.print("Choice of arena: ");
+        int choice = input.nextInt();
 
-    public Player getCurrentPlayer() {
-        return currentPlayer;
-    }
+    } 
 
-    public boolean isGameOver() {
-        return gameOver;
-    }
 
-    //Methods 
-    public void switchTurns() {
-        if (currentPlayer == player1) {
-            currentPlayer = player2;
-        } else {
-            currentPlayer = player1;
+    private void buildFleets() {
+        for(int i=0; i<playerList.length; i++) {
+            Player player = playerList[i];
+
+            //Creae ships. Add more ships when all ship subclasses are made. 
+            Ship battleship = new Battleship();
+            
+            //Add ships to fleet. Add more ships when all ship subclasses are made
+            player.addShip(battleship);
+
+            //Place ships randomly. Wait till arena class is completed
+
         }
     }
 
-    public void checkFleets() {
+    //Wait till arenas are completed
+    public void runBattle(Scanner input) {
 
-    if (player1.getFleet().isEmpty()) {
-
-        gameOver = true;
-
-        player2.updateStats(false, false, false, true, false);
-        player1.updateStats(false, false, false, false, true);
-
-        System.out.println("The winner is: " + player2.getPlayerID());
     }
-
-    else if (player2.getFleet().isEmpty()) {
-
-        gameOver = true;
-
-        player1.updateStats(false, false, false, true, false);
-        player2.updateStats(false, false, false, false, true);
-
-        System.out.println("The winner is: " + player1.getPlayerID());
+    
+    public void displayStatistics() {
+        System.out.println("\n========== FINAL STATISTICS ==========");
+        for(int i=0; i<playerList.length; i++) {
+            playerList[i].displayStatistics();
+        }
     }
-}
-
-    public void displayPerformance() {
-
-        System.out.println("\n===== PLAYER 1 STATISTICS =====");
-        player1.displayPerformance();
-
-        System.out.println("\n===== PLAYER 2 STATISTICS =====");
-        player2.displayPerformance();
-    }
-public void startGame() {
-
-        System.out.println("================================");
-        System.out.println("     NAVAL FLEET BATTLE");
-        System.out.println("================================");
-
-        System.out.println("Player 1: " + player1.getPlayerID());
-        System.out.println("Player 2: " + player2.getPlayerID());
-
-        System.out.println("\nGame started!");
-        System.out.println("Current player: "
-                + currentPlayer.getPlayerID());
-    }
-
 }

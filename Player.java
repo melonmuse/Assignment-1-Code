@@ -1,8 +1,12 @@
+//1097512 - Abeer Abu Shiekah
+//
+// 
+
 import java.util.ArrayList;
 public class Player {
     
     //Initialize Player Information
-    private final int playerID;
+    private static int playerID = 0;
     private final String playerName;
     private final ArrayList<Ship> fleet;
     private final ArrayList<Coordinate> shotHistory;
@@ -14,8 +18,8 @@ public class Player {
     private int losses;
 
     //Constructor 
-    public Player(int playerId, String playerName) {
-        this.playerID = playerId;
+    public Player(String playerName) {
+        this.playerID = playerID++;
         this.playerName = playerName;
 
         fleet = new ArrayList<>();
@@ -72,14 +76,16 @@ public class Player {
         fleet.add(ship);
     }
     
-    public void recordShot(Coordinate coordinate) {
-        if (!shotHistory.contains(coordinate)) {
-            shotHistory.add(coordinate);
-            shotsFired++;
+    public boolean recordShot(Coordinate coordinate) {
+        if (shotHistory.contains(coordinate)) {
+            return false;
         }
+        shotHistory.add(coordinate);
+        shotsFired++;
+        return true;
     }
     
-        public void recordHit() {
+    public void recordHit() {
         hits++;
     }
 
@@ -108,7 +114,7 @@ public class Player {
 
     public boolean allShipsSunk() {
         for (Ship ship : fleet) {
-            if (!ship.isSunk()) {
+            if (!ship.Sunk()) {
                 return false;
             }
         }
@@ -118,7 +124,7 @@ public class Player {
     public int remainingShips() {
         int count = 0;
         for (Ship ship : fleet) {
-            if (!ship.isSunk()) {
+            if (!ship.Sunk()) {
                 count++;
             }
         }
@@ -133,7 +139,9 @@ public class Player {
         System.out.println("Ships Sunk: " + getShipsSunk());
         System.out.println("Wins: " + getWins());
         System.out.println("Losses: " + getLosses());
-        System.out.println("Accuracy: " + "%");
+        System.out.println("Misses: " + getMisses());
+        System.out.println("Ships Remaining: " + remainingShips() + " / " + fleet.size());
+        System.out.printf("Accuracy: %.1f%%%n", getAccuracy());
     }
 
 }

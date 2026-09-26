@@ -1,11 +1,20 @@
-public class battleShip  extends ship{
+public class Battleship extends Ship{
     private boolean armorUsed;
 
-    public battleShip(){
-        super("battleShip", 4);
+    public Battleship(){
+        super("battleship", 4);
         armorUsed = false;
     }
 
-    
-    
+    @Override
+    public String getSpecialAbility() {
+        return "Special Ability";
+    }
+
+    @Override
+    public boolean specialAbilityOnHit() {
+        return true;
+    }
+
+
 }

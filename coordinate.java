@@ -1,9 +1,9 @@
-public class coordinate {
+public class Coordinate {
     private final int column;
     private final int row;
     
 
-    public coordinate(int column, int row){
+    public Coordinate(int column, int row){
         this.column = column;
         this.row = row;
     }
@@ -19,9 +19,11 @@ public class coordinate {
 
     @Override 
     public boolean equals(Object obj){
-        if (this == obj) returns true;
-        if (!(obj instanceof coordinate)) return false;
-        coordinate other = (coordinate) obj;
+        if (this == obj) 
+            return true;
+        if (!(obj instanceof Coordinate)) 
+            return false;
+        Coordinate other = (Coordinate) obj;
         return row == other.row && column == other.column;
     }
 

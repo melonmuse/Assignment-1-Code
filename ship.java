@@ -2,15 +2,15 @@ import java.util.ArrayList;
 
 //INCOMPLETE
 
-public abstract class ship {
-    private final String name;
-    private final int size;
+public abstract class Ship {
+    private String name;
+    private int size;
     private int health;
-    private final ArrayList<coordinate> position;
-    private final ArrayList<coordinate> hits;
+    private ArrayList<Coordinate> position;
+    private ArrayList<Coordinate> hits;
 
 
-    public ship(String name, int size){
+    public Ship(String name, int size){
         this.name = name;
         this.size = size;
         this.health = size;
@@ -36,19 +36,19 @@ public abstract class ship {
         return health <= 0;
     }
 
-    public ArrayList<coordinate> getPosition(){
+    public ArrayList<Coordinate> getPosition(){
         return new ArrayList<>(position);
     }
 
-    public void addPosition(coordinate coordinate){
+    public void addPosition(Coordinate coordinate){
         position.add(coordinate);
     }
 
-    public boolean occupies(coordinate coordinate){
+    public boolean occupies(Coordinate coordinate){
         return position.contains(coordinate);
     }
 
-    public final String recieveHit(coordinate coordinate){
+    public final String recieveHit(Coordinate coordinate){
         if (!occupies(coordinate)){
             return "missed";
         }
