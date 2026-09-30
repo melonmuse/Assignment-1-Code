@@ -1,40 +1,22 @@
 public class Coordinate {
-    private final int column;
-    private final int row;
-    
 
-    public Coordinate(int column, int row){
-        this.column = column;
+    private int row;
+    private int column;
+
+    public Coordinate(int row, int column) {
         this.row = row;
+        this.column = column;
     }
 
-    public int getColumn(){
-        return column;
-    }
-
-    public int getRow(){
+    public int getRow() {
         return row;
     }
 
-
-    @Override 
-    public boolean equals(Object obj){
-        if (this == obj) 
-            return true;
-        if (!(obj instanceof Coordinate)) 
-            return false;
-        Coordinate other = (Coordinate) obj;
-        return row == other.row && column == other.column;
+    public int getColumn() {
+        return column;
     }
 
-    @Override 
-    public String toString(){
-        return "()" + row + "," + column + 
-        ")";
-    }
-
-    @Override 
-    public int hashCode(){
-        return 31 * row + column;
+    public String toString() {
+        return "(" + row + ", " + column + ")";
     }
 }
